@@ -15,9 +15,18 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const drawerWidth = 240;
-const navItems = [['Expertise', 'expertise'], ['History', 'history'], ['Projects', 'projects'], ['Contact', 'contact']];
+const navItems = [['Skills', 'skills'], ['Education', 'education'], ['Work History', 'history'], ['Projects', 'projects']];
+
+const scrollToTop = () => {
+  window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Smooth scroll effect
+  });
+};
 
 function Navigation({parentToChild, modeChange}: any) {
 
@@ -92,7 +101,12 @@ function Navigation({parentToChild, modeChange}: any) {
           ) : (
             <DarkModeIcon onClick={() => modeChange()}/>
           )}
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}>
+            <div className="social_icons_nav">
+              <a href="https://github.com/MalazanJQ" target="_blank" rel="noreferrer"><GitHubIcon/></a>
+              <a href="https://www.linkedin.com/in/jacqueline-j-liu/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+            </div>
+            <Button onClick={scrollToTop}>Top</Button>
             {navItems.map((item) => (
               <Button key={item[0]} onClick={() => scrollToSection(item[1])} sx={{ color: '#fff' }}>
                 {item[0]}
